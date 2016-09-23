@@ -1,4 +1,55 @@
 ###############################################################################
+# Autocomplete / ls
+###############################################################################
+
+# Nice colours
+autoload -Uz colors && colors
+
+# Both BSD and Linux variants required for ZSH and LS respectively
+# http://geoff.greer.fm/lscolors/
+export LSCOLORS="ExFxCxBxGaegxdabagacad"
+export LS_COLORS='di=1;34:ln=1;35:so=1;32:pi=1;31:ex=1;36;40:bd=34;46:cd=0;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+
+# Enable ls colors
+ls --color -d . &>/dev/null 2>&1 && alias ls='ls -F --color=tty' || alias ls='ls -GF'
+# More extensive tab completion
+autoload -U compinit
+compinit
+
+# Complete the bit to the left of cursor if cursor is in middle of word
+bindkey '^i' expand-or-complete-prefix
+
+unsetopt menu_complete   # do not autoselect the first completion entry
+unsetopt flowcontrol
+setopt auto_menu         # show completion menu on succesive tab press
+setopt complete_in_word  # tab completion from both ends
+setopt always_to_end
+setopt auto_param_slash
+
+zstyle ':completion:*:*:*:*:*' menu select
+
+# Case insensitive (all), partial-word and substring completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+
+# Zsh to use the same colors as ls
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# Colours in completions
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+
+# Better globs (eg. **/*.txt to find all txt files)
+setopt extendedglob
+unsetopt caseglob
+
+###############################################################################
+# History
+###############################################################################
+
+HISTFILE=~/.zhistory
+HISTSIZE=SAVEHIST=10000
+setopt sharehistory # share between all open shells
+setopt extendedhistory
+
+###############################################################################
 # Vim mode
 ###############################################################################
 
@@ -46,9 +97,6 @@ function git_prompt_info() {
 # Prompt
 ###############################################################################
 
-# Nice colours
-autoload -Uz colors && colors
-
 # Return status
 RET_STATUS="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%}%s)"
 # Token to display return/vim status
@@ -58,3 +106,10 @@ CURRENT_DIR="%{$fg_bold[cyan]%}%c"
 # Default prompt (after token which is set by vim functions)
 PROMPT_DIR_GIT='${CURRENT_DIR} $(git_prompt_info)%{$reset_color%}'
 PROMPT=$PROMPT_DIR_GIT
+
+###############################################################################
+# Misc
+###############################################################################
+
+# Display CPU usage on commands running for longer than 10s
+REPORTTIME=10
