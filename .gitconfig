@@ -1,0 +1,25 @@
+[user]
+
+    name = Tom Smalley
+    email = tfsmalley@gmail.com
+
+[push]
+
+    default = simple
+
+[core]
+
+    editor = vim
+    # Make `git rebase` safer on macOS
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+
+[credential]
+
+    helper = osxkeychain
+
+[color]
+
+    diff = auto
+    status = auto
+    branch = auto
