@@ -1,0 +1,16 @@
+# Return status
+RET_STATUS="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%}%s)"
+# Token to display return/vim status
+STATUS_TOKEN="λ"
+# Current directory
+CURRENT_DIR="%{$fg_bold[cyan]%}%c"
+# Git status
+function git_prompt_info() {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "$(parse_git_dirty)$(current_branch)%{$reset_color%} "
+}
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}"
+# Default prompt (after token which is set by vim functions)
+PROMPT_DIR_GIT='${CURRENT_DIR} $(git_prompt_info)%{$reset_color%}'
+PROMPT=$PROMPT_DIR_GIT
