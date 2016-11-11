@@ -1,2 +1,2 @@
-xcompmgr -c &
+xcompmgr -c -o .5 &
 ~/.wallpaper.sh &

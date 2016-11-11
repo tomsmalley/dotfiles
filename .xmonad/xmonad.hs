@@ -4,20 +4,24 @@ import XMonad.Actions.CycleWS
 import XMonad.Actions.Submap
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
+import XMonad.Hooks.ManageDocks
 import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.EqualSpacing
+import XMonad.Util.Run (spawnPipe)
 import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
 import System.Exit
+import System.IO (hPutStrLn)
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = map show [1 .. 9 :: Int]
 
 keybinds conf@(XConfig {modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess)) -- logout
-    , ((modm, xK_q), spawn "xmonad --recompile; xmonad --restart"
+    , ((modm, xK_q), spawn "pkill xmobar; xmonad --recompile; xmonad --restart"
                   >> setLayout (layoutHook conf)) -- restart xmonad, reset layout
+    , ((modm .|. controlMask, xK_b), sendMessage ToggleStruts)
     -- launching and killing programs
     , ((modm, xK_n), spawn $ terminal conf) -- launch terminal
     , ((modm, xK_space), spawn "dmenu_run") -- launch dmenu
@@ -66,18 +70,30 @@ keybinds conf@(XConfig {modMask = modm}) = M.fromList $
     [((modm, k), windows $ W.greedyView i)
         | (i, k) <- zip (workspaces conf) [xK_1 .. xK_9]]
 
-layout = equalSpacing 12 0 0 0 emptyBSP
+layout = avoidStruts $ equalSpacing 12 0 0 0 emptyBSP
 
-myLogHook :: X ()
-myLogHook = fadeInactiveLogHook 0.9 -- relies on xcompmgr, fade windows
+myLogHook h = do
+    dynamicLogWithPP $ barPP h
+    fadeInactiveLogHook 0.9 -- relies on xcompmgr, fade windows
 
-main = xmonad $ withNavigation2DConfig def { defaultTiledNavigation = centerNavigation }
-              $ def
-    { terminal = "urxvt"
-    , borderWidth = 0
-    --, modMask = mod4Mask -- super key
-    , keys = keybinds
-    , layoutHook = layout
-    , logHook = myLogHook
-    , workspaces = myWorkspaces
-    }
+xConfig = withNavigation2DConfig def { defaultTiledNavigation = centerNavigation }
+        $ def { terminal = "urxvt"
+              , borderWidth = 0
+              --, modMask = mod4Mask -- super key
+              , keys = keybinds
+              , layoutHook =  layout
+              , workspaces = myWorkspaces
+              }
+
+barPP h = defaultPP { ppLayout = const ""
+                    , ppOutput = hPutStrLn h
+                    , ppSep = " | "
+                    }
+
+--barStrutKey = const (0, xK_VoidSymbol)
+barStrutKey conf = (modMask conf .|. controlMask, xK_b)
+
+main = do
+    xmobar <- spawnPipe "xmobar"
+    xmonad xConfig { logHook = myLogHook xmobar }
+    --xmonad =<< statusBar "xmobar" barPP barStrutKey xConfig
