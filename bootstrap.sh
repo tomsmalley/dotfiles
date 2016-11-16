@@ -25,3 +25,5 @@ else
     fi;
 fi;
 unset doIt;
+
+chmod +x ~/.wallpaper.sh

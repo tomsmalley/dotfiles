@@ -16,7 +16,8 @@
 
 [credential]
 
-    helper = osxkeychain
+#    helper = osxkeychain
+    helper = store
 
 [color]
 

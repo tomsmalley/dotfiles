@@ -1,0 +1,36 @@
+Config {
+
+      font = "xft:Ubuntu Mono:pixelsize=15:antialias=true"
+    , bgColor = "#272822"
+    , fgColor = "grey"
+    , position = Top
+    , border = NoBorder
+
+    , sepChar = "%"
+    , alignSep = "}{"
+    , template = " %StdinReader% }{ %cpu% | %memory% | %date% "
+
+    , hideOnStart = False
+    , allDesktops = True
+
+    , commands =
+
+        [ Run StdinReader
+        , Run Cpu
+            [ "--template", "<total>%"
+            , "--Low", "50"
+            , "--High", "85"
+            , "--low", "grey"
+            , "--normal", "darkorange"
+            , "--high", "darkred"
+            , "--ppad", "2"
+            ] 10
+        , Run Memory
+            [ "--template", "<used>M <usedratio>%"
+            , "--ppad", "2"
+            ] 10
+        , Run Date "%a %H:%M" "date" 10
+
+        ]
+
+}

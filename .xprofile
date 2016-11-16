@@ -1,0 +1,8 @@
+# make sure desktop icons dont mess things up (esp. when nautilus is launched)
+dconf write /org/gnome/desktop/background/show-desktop-icons false
+
+# for transparency
+xcompmgr -c -o .5 &
+
+# desktop background script
+~/.wallpaper.sh &
