@@ -1,5 +1,5 @@
 # Enable kwm compatibility mode
-khd kwm on
+#khd kwm on
 
 # set color of default mode
 khd mode default color 0xFFD5C4A1
@@ -15,9 +15,6 @@ ctrl - m                 :    khd -e "mode activate prefix"
 
 # Quit Kwm
 cmd + alt + ctrl - q     :    kwmc quit
-
-# Launch iTerm2
-cmd - return             :    open -na /Applications/iTerm2.app
 
 # Set Space Tiling Mode To BSP
 cmd + ctrl - a           :    kwmc space -t bsp
