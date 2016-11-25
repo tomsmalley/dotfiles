@@ -42,13 +42,6 @@ ctrl - h : kwmc window -f west
 ctrl - l : kwmc window -f east
 ctrl - j : kwmc window -f south
 ctrl - k : kwmc window -f north
-ctrl + shift - h : kwmc display -f prev
-ctrl + shift - l : kwmc display -f next
-
-# Give Focus To Screen
-cmd + alt - 1            :    kwmc display -f 0
-cmd + alt - 2            :    kwmc display -f 1
-cmd + alt - 3            :    kwmc display -f 2
 
 # Swap Focused Window
 prefix + ctrl - h : kwmc window -s west
@@ -60,7 +53,10 @@ prefix + ctrl - l : kwmc window -s east
 prefix + cmd + ctrl - h : kwmc window -m space left
 prefix + cmd + ctrl - l : kwmc window -m space right
 
-# Move Focused Window To Scrn
-ctrl + alt - 1           :    kwmc window -m display 0
-ctrl + alt - 2           :    kwmc window -m display 1
-ctrl + alt - 3           :    kwmc window -m display 2
+# Move focus between displays
+ctrl + alt - h : kwmc display -f prev
+ctrl + alt - l : kwmc display -f next
+
+# Move window between displays
+prefix + ctrl + alt - h : kwmc window -m display prev
+prefix + ctrl + alt - l : kwmc window -m display next
