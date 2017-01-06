@@ -16,14 +16,14 @@ filetype plugin on
 filetype indent on
 syntax on
 
-colorscheme molokai
+colorscheme desertEx
 set cursorline " highlight current line
 
 set formatoptions+=t
 set textwidth=79 " column limit
 set shiftwidth=4 " 4 space tabs
 set tabstop=4
-set noexpandtab " usually expandtab
+set expandtab " usually expandtab
 set softtabstop=4
 set shiftround
 set autoindent
@@ -47,10 +47,11 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 " show line breaks
 set list
-set listchars=eol:¬
+set listchars=eol:\ 
 " show tabs as "|    " (don't remove trailing space)
 set listchars+=tab:\|\ 
-set listchars+=space:·
+" set listchars+=space:·
+set listchars+=space:\ 
 set listchars+=trail:~
 "highlight ¬ ctermfg=15
 syn match myChar "\¬"
