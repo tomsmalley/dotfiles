@@ -16,6 +16,8 @@ filetype plugin on
 filetype indent on
 syntax on
 
+let g:haskell_classic_highlighting = 1
+
 colorscheme desertEx
 set cursorline " highlight current line
 
