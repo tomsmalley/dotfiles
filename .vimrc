@@ -1,7 +1,7 @@
-" Fancy status bar arrows
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'desertEx'
-" Hide vim showing mode (airline does it)
+" No fancy status bar arrows
+let g:airline_powerline_fonts = 0
+let g:airline_theme = 'bubblegum'
+" Hide vim status bar
 set noshowmode
 " Get rid of arrows
 let g:airline_left_sep = ''
@@ -18,46 +18,51 @@ syntax on
 
 let g:haskell_classic_highlighting = 1
 
-colorscheme desertEx
-set cursorline " highlight current line
+set background=dark
+colorscheme hybrid
+set termguicolors
+" highlight current line
+set cursorline
 
-set formatoptions+=t
-set textwidth=79 " column limit
-set shiftwidth=4 " 4 space tabs
+" column limit
+set textwidth=80
+" width of hard tab
 set tabstop=4
-set expandtab " usually expandtab
-set softtabstop=4
+" insert spaces instead of tab characters
+set expandtab
+" width of soft tab
+set softtabstop=2
+" how many columns to shift by (>>)
+set shiftwidth=2 " 2 space tabs
+" round (>>) action to multiples of tab width
 set shiftround
+" keep indent level
 set autoindent
-set ruler " show position in bottom left
-set number " show line number on current line
+" show line number on current line
+set number
+" keep vim-airline on last window always
+set laststatus=2
 
-set laststatus=2 " for vim-airline
-
-set mouse=a " enable mouse interaction
+" enable mouse interaction
+set mouse=a
 " scroll one line instead of three
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
-hi TabLine ctermfg=White ctermbg=DarkGrey
-hi TabLineSel ctermfg=White ctermbg=DarkCyan
-hi TabLineFill ctermfg=Black ctermbg=Black
+"hi TabLine ctermfg=White ctermbg=DarkGrey
+"hi TabLineSel ctermfg=White ctermbg=DarkCyan
+"hi TabLineFill ctermfg=Black ctermbg=Black
 
-" show trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+"highlight LineNr ctermfg=darkgray
+"highlight CursorLineNr ctermfg=white
 
 " show line breaks
 set list
 set listchars=eol:\ 
-" show tabs as "|    " (don't remove trailing space)
+" show tabs as "|   " (don't remove trailing space)
 set listchars+=tab:\|\ 
-" set listchars+=space:·
-set listchars+=space:\ 
+"set listchars+=space:·
 set listchars+=trail:~
-"highlight ¬ ctermfg=15
-syn match myChar "\¬"
-highlight myChar ctermfg=17
 
 " fix backspace
 set backspace=indent,eol,start
