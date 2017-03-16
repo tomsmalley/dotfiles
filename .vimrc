@@ -8,6 +8,20 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+
+" Allow buffers to be hidden if you've modified a buffer.
+set hidden
+" Move to the next buffer
+nmap <C-L> :bnext<CR>
+" Move to the previous buffer
+nmap <C-H> :bprevious<CR>
+
 
 set term=xterm
 set t_Co=256
