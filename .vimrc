@@ -60,12 +60,6 @@ set smartindent
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
-" Move to end of line
-nnoremap E $
-nnoremap $ <nop>
-nnoremap d$ <nop>
-nnoremap yE y$
-nnoremap y$ <nop>
 " Toggle gundo (super undo)
 nnoremap <C-u> :GundoToggle<CR>
 
