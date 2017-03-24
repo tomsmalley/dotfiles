@@ -89,6 +89,21 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_indent_case_alternative = 1
 let g:haskell_indent_if = 0
 
+" Swap some haskell highlight groups (specific to hybrid colorscheme)
+" blue types
+highlight link haskellType Keyword
+highlight link haskellAssocType Keyword
+highlight link haskellQuotedType Keyword
+" cyan keywords
+highlight link haskellKeyword Structure
+highlight link haskellDefault Structure
+highlight link haskellInfix Structure
+highlight link haskellRecursiveDo Structure
+highlight link haskellArrowSyntax Structure
+" orange strings
+highlight link haskellString Type
+highlight link haskellChar Type
+
 " Airline settings
 " No fancy status bar arrows
 let g:airline_powerline_fonts = 0
