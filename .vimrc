@@ -88,7 +88,6 @@ let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
 let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_indent_case_alternative = 1
 let g:haskell_indent_if = 0
-let g:haskell_indent_let = 0
 
 " Swap some haskell highlight groups (specific to hybrid colorscheme)
 " blue types
