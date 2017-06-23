@@ -1,0 +1,23 @@
+// Place your settings in this file to overwrite the default settings
+{ "vim.disableAnnoyingNeovimMessage": true
+, "vim.handleKeys":
+  { "<C-t>": false
+  , "<C-i>": false
+  }
+, "workbench.colorTheme": "One Monokai"
+, "workbench.colorCustomizations":
+  { "editor.background": "#23272F" }
+, "editor.minimap.enabled": false
+, "editor.fontSize": 12
+, "editor.tabSize": 2
+, "editor.overviewRulerBorder": false
+, "editor.scrollBeyondLastLine": false
+, "editor.wordWrap": "wordWrapColumn"
+// Full screen allows 3x 80 column splits to sit perfectly side by side,
+// provided letterSpacing is adjusted slightly
+, "editor.letterSpacing": -0.12
+// Gets rid of massive space on left of line numbers
+, "editor.glyphMargin": false
+// cmd+b to toggle
+, "workbench.activityBar.visible": false
+}

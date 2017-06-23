@@ -1,0 +1,111 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "ctrl+t",
+        "command": "haskero.insertType"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "shift+cmd+]",
+        "command": "-workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+shift+h",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "shift+cmd+[",
+        "command": "-workbench.action.previousEditor"
+    },
+    {
+        "key": "cmd+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "cmd+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "cmd+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "cmd+d",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "cmd+\\",
+        "command": "-workbench.action.splitEditor"
+    },
+    {
+        "key": "cmd+4",
+        "command": "workbench.action.terminal.focusNext"
+    },
+    {
+        "key": "cmd+1",
+        "command": "workbench.actions.view.problems"
+    },
+    {
+        "key": "shift+cmd+m",
+        "command": "-workbench.actions.view.problems"
+    },
+    {
+        "key": "cmd+2",
+        "command": "workbench.action.output.toggleOutput"
+    },
+    {
+        "key": "shift+cmd+u",
+        "command": "-workbench.action.output.toggleOutput"
+    },
+    {
+        "key": "cmd+3",
+        "command": "workbench.debug.action.toggleRepl"
+    },
+    {
+        "key": "shift+cmd+y",
+        "command": "-workbench.debug.action.toggleRepl"
+    },
+    {
+        "key": "cmd+3",
+        "command": "-workbench.action.focusThirdEditorGroup"
+    },
+    {
+        "key": "cmd+1",
+        "command": "-workbench.action.focusFirstEditorGroup"
+    },
+    {
+        "key": "cmd+2",
+        "command": "-workbench.action.focusSecondEditorGroup"
+    },
+    {
+        "key": "cmd+m",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "cmd+b",
+        "command": "workbench.action.toggleActivityBarVisibility"
+    },
+    {
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+t",
+        "command": "workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+shift+`",
+        "command": "-workbench.action.terminal.new"
+    },
+    {
+        "key": "cmd+t",
+        "command": "-workbench.action.showAllSymbols"
+    }
+]
